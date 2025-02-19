@@ -35,7 +35,6 @@ class SortViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             picckerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             picckerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            // label2 — отталкивается от нижнего края label1
             successButton.topAnchor.constraint(equalTo: picckerView.bottomAnchor, constant: 20),
             successButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             successButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)

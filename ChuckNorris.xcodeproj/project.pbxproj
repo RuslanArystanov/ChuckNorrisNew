@@ -63,8 +63,8 @@
 				53EF38D62D6591E00025F99A /* NetworkManagers */,
 				53EF38D72D6591F70025F99A /* Models */,
 				53EF38D82D6592110025F99A /* ViewControllers */,
-				53EF38D92D6592300025F99A /* Supports */,
-				53EF38C12D658A1A0025F99A /* Assets.xcassets */,
+				53EF38D92D6592300025F99A /* Resources */,
+				53EF38DA2D65F5590025F99A /* Images */,
 			);
 			path = ChuckNorris;
 			sourceTree = "<group>";
@@ -95,14 +95,22 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		53EF38D92D6592300025F99A /* Supports */ = {
+		53EF38D92D6592300025F99A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				53EF38B82D658A180025F99A /* AppDelegate.swift */,
 				53EF38BA2D658A180025F99A /* SceneDelegate.swift */,
 				53EF38C62D658A1A0025F99A /* Info.plist */,
 			);
-			path = Supports;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		53EF38DA2D65F5590025F99A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				53EF38C12D658A1A0025F99A /* Assets.xcassets */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

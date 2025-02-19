@@ -26,14 +26,12 @@ class RandomViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         addElementsToView()
         
-        shimmerImage.image = UIImage(named: "shimmer dlya rusa")
-
+        getCategories()
+    
         categiriesPicker.delegate = self
         categiriesPicker.dataSource = self
         
         getFactButton.addTarget(self, action: #selector(getFact), for: .touchUpInside)
-        
-        getCategories()
     }
     
     @objc func getFact() {
