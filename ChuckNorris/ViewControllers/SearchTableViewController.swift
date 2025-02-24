@@ -26,16 +26,8 @@ class SearchTableViewController: UITableViewController, SortDelegate{
                 target: self,
                 action: #selector(openSortView)
             )
-        
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(activityIndicator)
-        
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -100)
-        ])
-        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        addElementsToSearchView()
         refresh()
     }
     
@@ -73,6 +65,17 @@ class SearchTableViewController: UITableViewController, SortDelegate{
         
         cell.contentConfiguration = content
         return cell
+    }
+    
+    private func addElementsToSearchView() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -100)
+        ])
     }
 }
 

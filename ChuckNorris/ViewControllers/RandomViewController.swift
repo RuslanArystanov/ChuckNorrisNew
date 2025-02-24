@@ -25,9 +25,8 @@ class RandomViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         view.backgroundColor = .white
         
         addElementsToView()
-        
         getCategories()
-    
+        
         categiriesPicker.delegate = self
         categiriesPicker.dataSource = self
         
@@ -70,7 +69,7 @@ class RandomViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    private func addElementsToView(){
+    private func addElementsToView() {
         aboutChuckNorris.text = "About Chuck Norris"
         aboutChuckNorris.textAlignment = .left
         aboutChuckNorris.numberOfLines = 10
@@ -84,7 +83,7 @@ class RandomViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         categiriesPicker.translatesAutoresizingMaskIntoConstraints = false
         
-        shimmerImage.image = UIImage(named: "shimmer dlya rusa")
+        shimmerImage.image = UIImage(named: "shimmerDlyaRusa")
         shimmerImage.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(aboutChuckNorris)
