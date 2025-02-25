@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		532912D72D68980500EC012C /* shimmerDlyaRusa.png in Resources */ = {isa = PBXBuildFile; fileRef = 532912D62D68980500EC012C /* shimmerDlyaRusa.png */; };
+		536378292D6E15BA00B3DD38 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 536378282D6E15BA00B3DD38 /* search.png */; };
 		53EF38B92D658A180025F99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38B82D658A180025F99A /* AppDelegate.swift */; };
 		53EF38BB2D658A180025F99A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38BA2D658A180025F99A /* SceneDelegate.swift */; };
 		53EF38C22D658A1A0025F99A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53EF38C12D658A1A0025F99A /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		532912D62D68980500EC012C /* shimmerDlyaRusa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shimmerDlyaRusa.png; path = ChuckNorris/shimmerDlyaRusa.png; sourceTree = SOURCE_ROOT; };
+		536378282D6E15BA00B3DD38 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		53EF38B52D658A180025F99A /* ChuckNorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EF38B82D658A180025F99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53EF38BA2D658A180025F99A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		53EF38DA2D65F5590025F99A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				536378282D6E15BA00B3DD38 /* search.png */,
 				532912D62D68980500EC012C /* shimmerDlyaRusa.png */,
 				53EF38C12D658A1A0025F99A /* Assets.xcassets */,
 			);
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				532912D72D68980500EC012C /* shimmerDlyaRusa.png in Resources */,
+				536378292D6E15BA00B3DD38 /* search.png in Resources */,
 				53EF38C22D658A1A0025F99A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

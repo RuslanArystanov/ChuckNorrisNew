@@ -12,22 +12,28 @@ protocol SortDelegate {
     func toggleModalState(state: Bool)
 }
 
-class SearchTableViewController: UITableViewController, SortDelegate{
+class SearchTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SortDelegate{
     private var chuckNorrisFacts: [ChuckNorris] = []
     private var searchText: String?
     private var activityIndicator: UIActivityIndicatorView!
     private var search = UISearchController(searchResultsController: nil)
+    private let tableView = UITableView()
+    private let placeholderBackground = UIImageView()
     var isModalIsOpened = false
     var delegate: SearchTableViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "arrow.up.and.down"),
             style: .plain,
             target: self,
             action: #selector(openSortView)
         )
+        
         let tapGesture = UITapGestureRecognizer(
             target: self,
             action: #selector(hideKeyboardOrDismissView)
@@ -49,7 +55,7 @@ class SearchTableViewController: UITableViewController, SortDelegate{
     }
     
     @objc func openSortView(_ sender: Any) {
-        if !isModalIsOpened {
+        if !isModalIsOpened && !search.searchBar.isFirstResponder {
             isModalIsOpened = true
             let viewControllerToPresent = SortViewController()
             viewControllerToPresent.delegate = self
@@ -70,11 +76,11 @@ class SearchTableViewController: UITableViewController, SortDelegate{
     }
     
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         chuckNorrisFacts.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
@@ -96,12 +102,24 @@ class SearchTableViewController: UITableViewController, SortDelegate{
     
     private func addElementsToSearchView(){
         activityIndicator = UIActivityIndicatorView(style: .large)
+        placeholderBackground.image = UIImage(named: "search")
+        tableView.frame = view.bounds
+        
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(activityIndicator)
+        placeholderBackground.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(tableView)
+        view.addSubview(placeholderBackground)
+        tableView.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -100)
+            activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -100),
+            
+            placeholderBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            placeholderBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            placeholderBackground.heightAnchor.constraint(equalToConstant: 100),
+            placeholderBackground.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
 }
@@ -118,6 +136,7 @@ extension SearchTableViewController: UISearchBarDelegate {
             searchBar.text?.removeAll()
             showAlert(text: "Please enter more than 3 characters.")
         } else {
+            placeholderBackground.isHidden = true
             activityIndicator.startAnimating()
             
             NetworkManager.share.fetchData(
@@ -138,6 +157,7 @@ extension SearchTableViewController: UISearchBarDelegate {
                     if self.chuckNorrisFacts.isEmpty {
                         searchBar.text?.removeAll()
                         self.showAlert(text: "No results found. Please try a different search.")
+                        self.placeholderBackground.isHidden = false
                     }
                 }
             
@@ -150,7 +170,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         
         if text.count <= 3 {
             showAlert(text: "Please enter more than 3 characters.")
-            self.refreshControl?.endRefreshing()
+            tableView.refreshControl?.endRefreshing()
         } else {
             NetworkManager.share.fetchData(
                 url: URLChuckNorris.searchURL.rawValue,
@@ -166,8 +186,8 @@ extension SearchTableViewController: UISearchBarDelegate {
                         self.showAlert(text: "No results found. Please try a different search.")
                     }
                     
-                    if self.refreshControl != nil{
-                        self.refreshControl?.endRefreshing()
+                    if self.tableView.refreshControl != nil{
+                        self.tableView.refreshControl?.endRefreshing()
                     }
                 }
         }
@@ -177,7 +197,7 @@ extension SearchTableViewController: UISearchBarDelegate {
     func sortSearchResult(sortedMethod: String) {
         switch sortedMethod {
         case "Sort by Length":
-            chuckNorrisFacts.sort { $0.value.count < $1.value.count }
+            chuckNorrisFacts.sort { $0.value.lowercased().count < $1.value.lowercased().count }
         case "Sort Alphabetically":
             chuckNorrisFacts.sort {$0.value.lowercased() < $1.value.lowercased()}
         default:
