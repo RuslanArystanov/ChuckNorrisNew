@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		532912D72D68980500EC012C /* shimmerDlyaRusa.png in Resources */ = {isa = PBXBuildFile; fileRef = 532912D62D68980500EC012C /* shimmerDlyaRusa.png */; };
-		532912DB2D689A5600EC012C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532912DA2D689A5600EC012C /* SearchTableViewCell.swift */; };
 		53EF38B92D658A180025F99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38B82D658A180025F99A /* AppDelegate.swift */; };
 		53EF38BB2D658A180025F99A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38BA2D658A180025F99A /* SceneDelegate.swift */; };
 		53EF38C22D658A1A0025F99A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53EF38C12D658A1A0025F99A /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		532912D62D68980500EC012C /* shimmerDlyaRusa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shimmerDlyaRusa.png; path = ChuckNorris/shimmerDlyaRusa.png; sourceTree = SOURCE_ROOT; };
-		532912DA2D689A5600EC012C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		53EF38B52D658A180025F99A /* ChuckNorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EF38B82D658A180025F99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53EF38BA2D658A180025F99A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				53EF38CF2D65914C0025F99A /* RandomViewController.swift */,
 				53EF38CE2D65914C0025F99A /* SortViewController.swift */,
 				53EF38CC2D658F5C0025F99A /* SearchTableViewController.swift */,
-				532912DA2D689A5600EC012C /* SearchTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 				53EF38D12D65914C0025F99A /* RandomViewController.swift in Sources */,
 				53EF38D52D6591C70025F99A /* NetworkManager.swift in Sources */,
 				53EF38BB2D658A180025F99A /* SceneDelegate.swift in Sources */,
-				532912DB2D689A5600EC012C /* SearchTableViewCell.swift in Sources */,
 				53EF38CD2D658F5C0025F99A /* SearchTableViewController.swift in Sources */,
 				53EF38D32D6591A50025F99A /* ChuckNorris.swift in Sources */,
 			);

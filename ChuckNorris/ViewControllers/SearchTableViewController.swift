@@ -16,6 +16,7 @@ class SearchTableViewController: UITableViewController, SortDelegate{
     private var chuckNorrisFacts: [ChuckNorris] = []
     private var searchText: String?
     private var activityIndicator: UIActivityIndicatorView!
+    private var search = UISearchController(searchResultsController: nil)
     var modalIsOpened = false
     
     override func viewDidLoad() {
@@ -26,11 +27,17 @@ class SearchTableViewController: UITableViewController, SortDelegate{
                 target: self,
                 action: #selector(openSortView)
             )
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSortView))
+        view.addGestureRecognizer(tapGesture)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         addElementsToSearchView()
+        setupSearchController()
         refresh()
     }
     
+    @objc func hideSortView(){
+        //TO-DO: реализовать закрытие боттомщита сортировки
+    }
     
     @objc func openSortView(_ sender: Any) {
         if !modalIsOpened {
@@ -67,7 +74,16 @@ class SearchTableViewController: UITableViewController, SortDelegate{
         return cell
     }
     
-    private func addElementsToSearchView() {
+    private func setupSearchController(){
+        search.searchBar.delegate = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search..."
+        search.hidesNavigationBarDuringPresentation = false
+        search.automaticallyShowsCancelButton = false
+        navigationItem.searchController = search
+    }
+    
+    private func addElementsToSearchView(){
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)

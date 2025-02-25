@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
 
         // 2. Создаём Первый экран (с NavigationController)
-        let searchTableVC = SearchTableViewController(style: .plain)
+        let searchTableVC = SearchTableViewController()
         searchTableVC.title = "About Chuck Norris"
         let firstNavController = UINavigationController(rootViewController: searchTableVC)
         firstNavController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "house"), tag: 0)
