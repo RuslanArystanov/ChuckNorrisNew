@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         randomVC.tabBarItem = UITabBarItem(title: "Список", image: UIImage(systemName: "list.bullet"), tag: 1)
 
         // 4. Добавляем контроллеры в Tab Bar
+        tabBarController.tabBar.tintColor = .orange
         tabBarController.viewControllers = [firstNavController, randomVC]
 
         // 5. Назначаем rootViewController и отображаем окно

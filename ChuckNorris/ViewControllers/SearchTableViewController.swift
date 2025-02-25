@@ -17,17 +17,22 @@ class SearchTableViewController: UITableViewController, SortDelegate{
     private var searchText: String?
     private var activityIndicator: UIActivityIndicatorView!
     private var search = UISearchController(searchResultsController: nil)
-    var modalIsOpened = false
+    var isModalIsOpened = false
+    var delegate: SearchTableViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "Sort",
-                style: .plain,
-                target: self,
-                action: #selector(openSortView)
-            )
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideSortView))
+            image: UIImage(systemName: "arrow.up.and.down"),
+            style: .plain,
+            target: self,
+            action: #selector(openSortView)
+        )
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(hideKeyboardOrDismissView)
+        )
+        
         view.addGestureRecognizer(tapGesture)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         addElementsToSearchView()
@@ -35,18 +40,24 @@ class SearchTableViewController: UITableViewController, SortDelegate{
         refresh()
     }
     
-    @objc func hideSortView(){
-        //TO-DO: реализовать закрытие боттомщита сортировки
+    @objc func hideKeyboardOrDismissView(){
+        if search.searchBar.isFirstResponder {
+            search.searchBar.resignFirstResponder()
+        } else if isModalIsOpened {
+            delegate.closeSortView()
+        }
     }
     
     @objc func openSortView(_ sender: Any) {
-        if !modalIsOpened {
-            modalIsOpened = true
+        if !isModalIsOpened {
+            isModalIsOpened = true
             let viewControllerToPresent = SortViewController()
             viewControllerToPresent.delegate = self
             
             if let sheet = viewControllerToPresent.sheetPresentationController {
-                sheet.detents = [.medium()]
+                sheet.detents = [.custom(resolver: { _ in
+                    self.view.frame.height / 3
+                })]
                 sheet.largestUndimmedDetentIdentifier = .medium
                 sheet.prefersScrollingExpandsWhenScrolledToEdge = false
                 sheet.prefersEdgeAttachedInCompactHeight = true
@@ -177,7 +188,7 @@ extension SearchTableViewController: UISearchBarDelegate {
     }
     
     func toggleModalState(state: Bool) {
-        modalIsOpened = state
+        isModalIsOpened = state
     }
     
     private func showAlert(text: String){
