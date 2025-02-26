@@ -122,6 +122,25 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
             placeholderBackground.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
+    
+    private func searchAnimation(animate: Bool){
+        if animate == true {
+            let animation = CASpringAnimation(keyPath: "position.x")
+            animation.toValue = placeholderBackground.frame.origin.x + 50
+            animation.fromValue = placeholderBackground.frame.origin.x - 50
+            animation.duration = 3.0
+            animation.repeatCount = .infinity
+            animation.autoreverses = true
+            animation.damping = 01.0
+            animation.speed = 0.5
+            animation.initialVelocity = 1
+
+            placeholderBackground.layer.add(animation, forKey: "horizontalBounce")
+        } else {
+            placeholderBackground.layer.removeAnimation(forKey: "horizontalBounce")
+        }
+        
+    }
 }
 
 extension SearchTableViewController: UISearchBarDelegate {
@@ -136,8 +155,8 @@ extension SearchTableViewController: UISearchBarDelegate {
             searchBar.text?.removeAll()
             showAlert(text: "Please enter more than 3 characters.")
         } else {
-            placeholderBackground.isHidden = true
-            activityIndicator.startAnimating()
+            placeholderBackground.isHidden = false
+            searchAnimation(animate: true)
             
             NetworkManager.share.fetchData(
                 url: URLChuckNorris.searchURL.rawValue,
@@ -151,7 +170,8 @@ extension SearchTableViewController: UISearchBarDelegate {
                         self.chuckNorrisFacts.append(result)
                     }
                     
-                    self.activityIndicator.stopAnimating()
+                    self.searchAnimation(animate: false)
+                    self.placeholderBackground.isHidden = true
                     self.tableView.reloadData()
                     
                     if self.chuckNorrisFacts.isEmpty {
