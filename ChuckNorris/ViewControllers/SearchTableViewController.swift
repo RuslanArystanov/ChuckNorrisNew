@@ -139,7 +139,6 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             placeholderBackground.layer.removeAnimation(forKey: "horizontalBounce")
         }
-        
     }
 }
 
@@ -156,6 +155,8 @@ extension SearchTableViewController: UISearchBarDelegate {
             showAlert(text: "Please enter more than 3 characters.")
         } else {
             placeholderBackground.isHidden = false
+            chuckNorrisFacts.removeAll()
+            tableView.reloadData()
             searchAnimation(animate: true)
             
             NetworkManager.share.fetchData(
