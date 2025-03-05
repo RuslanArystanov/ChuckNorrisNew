@@ -115,7 +115,7 @@ class RandomViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 }
 
 extension RandomViewController {
-    private func getCategories(){
+    private func getCategories() {
         NetworkManager.share.fetchData(url: URLChuckNorris.categoryURL.rawValue) { (categories: [String]) in
             for category in categories {
                 self.categoriesChuck.append(category)
@@ -124,14 +124,14 @@ extension RandomViewController {
         }
     }
     
-    private func getFactFor(category name: String){
+    private func getFactFor(category name: String) {
         NetworkManager.share.fetchRandomData(url: URLChuckNorris.randomURL.rawValue,categoryName: name, isCategory: true) { ChuckNorris in
             self.stopShimmer()
             self.aboutChuckNorris.text = ChuckNorris.value
         }
     }
     
-    private func getRandomFact(){
+    private func getRandomFact() {
         NetworkManager.share.fetchRandomData(url: URLChuckNorris.randomURL.rawValue) { ChuckNorris in
             self.stopShimmer()
             self.aboutChuckNorris.text = ChuckNorris.value
@@ -169,5 +169,4 @@ extension RandomViewController {
         shimmerImage.layer.mask = .none
         shimmerLayer.removeAnimation(forKey: "shimmer")
     }
-    
 }

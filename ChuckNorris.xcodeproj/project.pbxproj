@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		532912D72D68980500EC012C /* shimmerDlyaRusa.png in Resources */ = {isa = PBXBuildFile; fileRef = 532912D62D68980500EC012C /* shimmerDlyaRusa.png */; };
+		535B00C82D783B3800BA9BF1 /* UnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535B00C72D783B3800BA9BF1 /* UnlockViewController.swift */; };
+		535B00CC2D784CA900BA9BF1 /* chuck-norris.png in Resources */ = {isa = PBXBuildFile; fileRef = 535B00CB2D784CA900BA9BF1 /* chuck-norris.png */; };
 		5363782D2D6F182200B3DD38 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 5363782C2D6F182200B3DD38 /* search.png */; };
 		53EF38B92D658A180025F99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38B82D658A180025F99A /* AppDelegate.swift */; };
 		53EF38BB2D658A180025F99A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EF38BA2D658A180025F99A /* SceneDelegate.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		532912D62D68980500EC012C /* shimmerDlyaRusa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shimmerDlyaRusa.png; path = ChuckNorris/shimmerDlyaRusa.png; sourceTree = SOURCE_ROOT; };
+		535B00C72D783B3800BA9BF1 /* UnlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockViewController.swift; sourceTree = "<group>"; };
+		535B00CB2D784CA900BA9BF1 /* chuck-norris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chuck-norris.png"; sourceTree = "<group>"; };
 		5363782C2D6F182200B3DD38 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		53EF38B52D658A180025F99A /* ChuckNorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EF38B82D658A180025F99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				53EF38CF2D65914C0025F99A /* RandomViewController.swift */,
 				53EF38CE2D65914C0025F99A /* SortViewController.swift */,
 				53EF38CC2D658F5C0025F99A /* SearchTableViewController.swift */,
+				535B00C72D783B3800BA9BF1 /* UnlockViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 		53EF38DA2D65F5590025F99A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				535B00CB2D784CA900BA9BF1 /* chuck-norris.png */,
 				5363782C2D6F182200B3DD38 /* search.png */,
 				532912D62D68980500EC012C /* shimmerDlyaRusa.png */,
 				53EF38C12D658A1A0025F99A /* Assets.xcassets */,
@@ -180,6 +186,7 @@
 				532912D72D68980500EC012C /* shimmerDlyaRusa.png in Resources */,
 				5363782D2D6F182200B3DD38 /* search.png in Resources */,
 				53EF38C22D658A1A0025F99A /* Assets.xcassets in Resources */,
+				535B00CC2D784CA900BA9BF1 /* chuck-norris.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535B00C82D783B3800BA9BF1 /* UnlockViewController.swift in Sources */,
 				53EF38D02D65914C0025F99A /* SortViewController.swift in Sources */,
 				53EF38B92D658A180025F99A /* AppDelegate.swift in Sources */,
 				53EF38D12D65914C0025F99A /* RandomViewController.swift in Sources */,

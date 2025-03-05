@@ -24,6 +24,7 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        openUnlockView()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -139,6 +140,13 @@ class SearchTableViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             placeholderBackground.layer.removeAnimation(forKey: "horizontalBounce")
         }
+    }
+    
+    private func openUnlockView(){
+        let vc = UnlockViewController()
+        vc.modalPresentationStyle = .fullScreen
+
+        present(vc, animated: false)
     }
 }
 
